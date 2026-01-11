@@ -93,84 +93,84 @@ Below are copy‑pasteable commands for both Bash and Windows (PowerShell / curl
 ### Health check
 Bash:
 ```bash
-curl -X GET http://localhost:3000/health
+curl -X GET https://plum-assignment-zq8y.onrender.com/health
 ```
 PowerShell:
 ```powershell
-curl.exe -X GET http://localhost:3000/health
+curl.exe -X GET https://plum-assignment-zq8y.onrender.com/health
 ```
 
 ### Parse — typed JSON answers
 Bash:
 ```bash
-curl -X POST http://localhost:3000/parse \
+curl -X POST https://plum-assignment-zq8y.onrender.com/parse \
   -H "Content-Type: application/json" \
   -d '{"age":42,"smoker":true,"exercise":"rarely","diet":"high sugar"}'
 ```
 PowerShell (create file to avoid quoting issues):
 ```powershell
 @'{"age":42,"smoker":true,"exercise":"rarely","diet":"high sugar"}'@ > samples/parse_typed.json
-curl.exe -X POST http://localhost:3000/parse -H "Content-Type: application/json" --data @samples/parse_typed.json
+curl.exe -X POST https://plum-assignment-zq8y.onrender.com/parse -H "Content-Type: application/json" --data @samples/parse_typed.json
 ```
 
 ### Parse — raw text (simulate OCR output)
 Bash:
 ```bash
-curl -X POST http://localhost:3000/parse \
+curl -X POST https://plum-assignment-zq8y.onrender.com/parse \
   -H "Content-Type: application/json" \
   -d '{"text":"Age: 42\nSmoker: yes\nExercise: rarely\nDiet: high sugar"}'
 ```
 PowerShell:
 ```powershell
 @'{"text":"Age: 42\nSmoker: yes\nExercise: rarely\nDiet: high sugar"}'@ > samples/parse_text.json
-curl.exe -X POST http://localhost:3000/parse -H "Content-Type: application/json" --data @samples/parse_text.json
+curl.exe -X POST https://plum-assignment-zq8y.onrender.com/parse -H "Content-Type: application/json" --data @samples/parse_text.json
 ```
 
 ### Extract factors (from answers JSON)
 Bash:
 ```bash
-curl -X POST http://localhost:3000/extract-factors \
+curl -X POST https://plum-assignment-zq8y.onrender.com/extract-factors \
   -H "Content-Type: application/json" \
   --data @samples/parse_typed.json
 ```
 PowerShell:
 ```powershell
-curl.exe -X POST http://localhost:3000/extract-factors -H "Content-Type: application/json" --data @samples/parse_typed.json
+curl.exe -X POST https://plum-assignment-zq8y.onrender.com/extract-factors -H "Content-Type: application/json" --data @samples/parse_typed.json
 ```
 
 ### Classify risk (from factors array)
 Bash:
 ```bash
-curl -X POST http://localhost:3000/classify-risk \
+curl -X POST https://plum-assignment-zq8y.onrender.com/classify-risk \
   -H "Content-Type: application/json" \
   -d '{"factors":["smoking","poor diet","low exercise"]}'
 ```
 PowerShell:
 ```powershell
 @'{"factors":["smoking","poor diet","low exercise"]}'@ > samples/factors.json
-curl.exe -X POST http://localhost:3000/classify-risk -H "Content-Type: application/json" --data @samples/factors.json
+curl.exe -X POST https://plum-assignment-zq8y.onrender.com/classify-risk -H "Content-Type: application/json" --data @samples/factors.json
 ```
 
 ### Recommendations
 Bash:
 ```bash
-curl -X POST http://localhost:3000/recommendations \
+curl -X POST https://plum-assignment-zq8y.onrender.com/recommendations \
   -H "Content-Type: application/json" \
   -d '{"risk_level":"high","factors":["smoking","poor diet","low exercise"]}'
 ```
 PowerShell:
 ```powershell
-curl.exe -X POST http://localhost:3000/recommendations -H "Content-Type: application/json" --data @samples/factors.json
+curl.exe -X POST https://plum-assignment-zq8y.onrender.com/recommendations -H "Content-Type: application/json" --data @samples/factors.json
 ```
 
 ### Health analysis — full image upload (end-to-end)
 Bash:
 ```bash
-curl -X POST http://localhost:3000/health-analysis -F "image=@samples/sample_image.png"
+curl -X POST https://plum-assignment-zq8y.onrender.com/health-analysis -F "image=@samples/sample_image.png"
 ```
 PowerShell (curl.exe):
 ```powershell
-curl.exe -X POST http://localhost:3000/health-analysis -F "image=@samples\sample_image.png" -H "Expect:"
+curl.exe -X POST https://plum-assignment-zq8y.onrender.com/health-analysis -F "image=@samples\sample_image.png" -H "Expect:"
 ```
 (The `-H "Expect:"` avoids 100-continue issues on some Windows setups.)
 

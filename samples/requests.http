@@ -1,0 +1,57 @@
+### Health
+GET http://localhost:3000/health
+
+### Parse JSON (typed answers)
+POST http://localhost:3000/parse
+Content-Type: application/json
+
+{
+  "age": 42,
+  "smoker": true,
+  "exercise": "rarely",
+  "diet": "high sugar"
+}
+
+### Parse Text (raw text parsing)
+POST http://localhost:3000/parse
+Content-Type: application/json
+
+{
+  "text": "Age: 42\nSmoker: yes\nExercise: rarely\nDiet: high sugar"
+}
+
+### Extract Factors
+POST http://localhost:3000/extract-factors
+Content-Type: application/json
+
+{
+  "age": 42,
+  "smoker": true,
+  "exercise": "rarely",
+  "diet": "high sugar"
+}
+
+### Classify Risk
+POST http://localhost:3000/classify-risk
+Content-Type: application/json
+
+{
+  "factors": ["smoking", "poor diet", "low exercise"]
+}
+
+### Recommendations
+POST http://localhost:3000/recommendations
+Content-Type: application/json
+
+{
+  "risk_level": "high",
+  "factors": ["smoking", "poor diet", "low exercise"]
+}
+
+### Health Analysis (image upload)
+POST http://localhost:3000/health-analysis
+Content-Type: multipart/form-data
+
+-- Use key: image (file) --
+
+

@@ -1,0 +1,48 @@
+{
+  "info": {
+    "name": "AI Health Risk Profiler",
+    "description": "Single endpoint for complete health analysis from images",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Health Analysis - Image Upload",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": "path/to/your/health-image.png",
+              "description": "Upload an image containing health data like:\nAge: 42\nSmoker: yes\nExercise: rarely\nDiet: high sugar"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3000/health-analysis",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["health-analysis"]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "description": "Sample health data for testing",
+  "image_text": "Age: 42\nSmoker: yes\nExercise: rarely\nDiet: high sugar",
+  "expected_risk_level": "high",
+  "expected_factors": ["smoking", "poor diet", "low exercise"],
+  "expected_recommendations": ["Quit smoking", "Reduce sugar", "Walk 30 mins daily"]
+}
+
+
